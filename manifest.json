@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "JS RTE Solver",
+  "description": "This extension shows a Google Image search result for the current page",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "js_logo.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["file://*"],
+      "js": ["Solver.js"]
+    }
+  ],
+  "devtools_page": "jsrte.html",
+  "web_accessible_resources":
+    [
+      "*"
+    ],
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  }
+}
