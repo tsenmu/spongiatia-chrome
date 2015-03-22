@@ -1,27 +1,25 @@
-console.log("Hello Wooooooorld!");
+;(function() {
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  var API_PREFIX = 'http://api.stackexchange.com/2.2';
+  script.type = 'text/javascript';
+  script.innerHTML = 'window.onerror = function (message, filename, lineno) {window.postMessage({ type: "FROM_PAGE", text: message }, "*");return true;};';
+  head.appendChild(script);
 
-//--------------------------------------
-var head = document.getElementsByTagName('head')[0];
-var script = document.createElement('script');
-var API_PREFIX = 'http://api.stackexchange.com/2.2';
-script.type = 'text/javascript';
-script.innerHTML = 'window.onerror = function (message, filename, lineno) {window.postMessage({ type: "FROM_PAGE", text: message }, "*");return true;};';
-head.appendChild(script);
-
-function searchID(query, callback) {
-  var searchUri = API_PREFIX + '/search/advanced?' + 
-  '&site=stackoverflow' + 
-  '&order=desc' +
-  '&sort=relevance' +
-  '&accepted=True' +
-  '&pagesize=10' +
-  '&filter=!--KJA8bUDfsI' + 
-  '&q=' + query;
-  var xmlhttp = new XMLHttpRequest();
-  var response = {};
-  response.suggestions = [];
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+  function searchID(query, callback) {
+    var searchUri = API_PREFIX + '/search/advanced?' + 
+    '&site=stackoverflow' + 
+    '&order=desc' +
+    '&sort=relevance' +
+    '&accepted=True' +
+    '&pagesize=10' +
+    '&filter=!--KJA8bUDfsI' + 
+    '&q=' + query;
+    var xmlhttp = new XMLHttpRequest();
+    var response = {};
+    response.suggestions = [];
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       //console.log(xmlhttp.responseText);
       // After successfuly got all the question ids.
       var obj = JSON.parse(xmlhttp.responseText);
@@ -35,9 +33,9 @@ function searchID(query, callback) {
       }
       var questionUri = API_PREFIX + '/questions/' + qIds +
       '?' +'&site=stackoverflow' + '&sort=votes' +'&filter=!4(Yr(zu(6cPEMGE59';
-      var qxmlhttp = new XMLHttpRequest();
-      qxmlhttp.onreadystatechange = function() {
-        if (qxmlhttp.readyState == 4 && qxmlhttp.status == 200) {
+        var qxmlhttp = new XMLHttpRequest();
+        qxmlhttp.onreadystatechange = function() {
+          if (qxmlhttp.readyState == 4 && qxmlhttp.status == 200) {
           // After successfully got all the question contents.
           var aIds = "";
           //console.log(qxmlhttp.responseText);
@@ -104,7 +102,6 @@ window.addEventListener("message", function(event) {
 //    console.log('sent to the server!')
 
 
-  }
+}
 }, false);
-
-
+})();

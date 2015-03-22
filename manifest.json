@@ -1,26 +1,25 @@
 {
   "manifest_version": 2,
 
-  "name": "JS RTE Solver",
-  "description": "This extension shows a Google Image search result for the current page",
+  "name": "Spongiatia Chrome Extension",
+  "description": "",
   "version": "1.0",
-
   "browser_action": {
-    "default_icon": "js_logo.png"
+    "default_icon": "public/images/icon.png"
   },
   "content_scripts": [
     {
-      "matches": ["file://*"],
-      "js": ["Solver.js"]
+      "matches": ["file://*", "http://*/*", "https://*/*"],
+      "js": ["public/js/content.js"]
     }
   ],
-  "devtools_page": "jsrte.html",
+  "devtools_page": "public/html/devtools.html",
   "web_accessible_resources":
     [
-      "*"
+      "public/*"
     ],
   "background": {
-    "scripts": ["eventPage.js"],
+    "scripts": ["public/js/background.js"],
     "persistent": false
   }
 }
