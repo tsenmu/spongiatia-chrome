@@ -20,7 +20,8 @@ chrome.runtime.onConnect.addListener(function (port) {
 // current tab
 chrome.runtime.onMessage.addListener(function(msg) {
     // Messages from content scripts should have sender.tab set
-    console.log(msg.err);
-    UIport.postMessage(({err: msg.err}))
+    console.log(msg);
+    UIport.postMessage(msg);
+    console.log("posted!");
     return true;
 });

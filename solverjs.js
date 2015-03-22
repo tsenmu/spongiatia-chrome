@@ -1,6 +1,6 @@
 window.onload = function() {
 var body = document.getElementsByTagName('div')[0];
-body.innerHTML = 'lalala';
+body.innerHTML = 'lololo';
 
 var port = chrome.runtime.connect({
     name: "panel"
@@ -13,7 +13,7 @@ port.postMessage({
 
 port.onMessage.addListener(function(msg) {
   var body = document.getElementsByTagName('body')[0];
-  var result = JSON.parse(msg.err);
+  var result = msg;
   var suggestions = result.suggestions;
   for (i = 0; i < suggestions.length; i++) { 
     var suggestion = suggestions[i];
@@ -31,9 +31,9 @@ port.onMessage.addListener(function(msg) {
 
     var answer;
     if (suggestion.accepted_answer) {
-      answer = suggestion.accepted_answer.body_markdown;
+      answer = markdown.toHTML(suggestion.accepted_answer.body_markdown);
     } else {
-      answer = suggestion.answers[0].body_markdown;
+      answer = markdown.toHTML(suggestion.answers[0].body_markdown);
     }
     answer = answer.replace(/\t/g, '&nbsp;&nbsp;');
     answer = answer.replace(/\r\n/g, '<br>');
