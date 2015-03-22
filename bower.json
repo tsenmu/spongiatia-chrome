@@ -1,0 +1,20 @@
+{
+  "name": "spongiatia-chrome",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tsenmu/spongiatia-chrome",
+  "authors": [
+    "Jingjie Zheng <i@tsenmu.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "markdown": "~0.5.0"
+  }
+}
