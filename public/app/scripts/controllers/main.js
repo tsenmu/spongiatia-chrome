@@ -7,6 +7,7 @@ angular.module('spongiatiaApp')
   SpongiatiaService.onMessage.addListener(function(msg) {
     $scope.$apply(function() {
       $scope.suggestions = msg.suggestions;
+      $scope.error_message = msg.error_message;
       $scope.suggestions = _.map($scope.suggestions, function(suggestion) {
         suggestion.question.title = suggestion.question.title;
         suggestion.question.body = _.unescape(marked(suggestion.question.body_markdown));

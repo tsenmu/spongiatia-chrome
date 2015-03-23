@@ -66,6 +66,7 @@
                 ans.body_markdown = aobj.items[i].body_markdown;
                 response.suggestions[i].accepted_answer = ans;
               }
+              response.error_message = query;
               chrome.runtime.sendMessage(response);
               console.log("sent!");
             }

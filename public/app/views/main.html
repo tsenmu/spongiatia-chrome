@@ -1,15 +1,16 @@
 <div class="alert alert-danger">{{error_message}}</div>
 <div ng-repeat="s in suggestions">
-  <div class="spongiatia-suggestion">
-    <div class="spongiatia-question">
-      <h1 class="spongiatia-question-title" ng-bind-html="s.question.title">  </h1>
-      <div ng-bind-html="s.question.body"></div>
+  <div class="panel panel-primary">
+    <div class="panel-heading" ng-bind-html="s.question.title"></div>
+    <div class="panel-body">
+      <div class="spongiatia-question">
+        <div ng-bind-html="s.question.body"></div>
+      </div>
+      <hr>
+      <div class="spongiatia-answer">
+        <div class="spongiatia-answer-body" ng-bind-html="s.answer.body"> </div>
+      </div>
     </div>
-    <hr>
-    <div class="spongiatia-answer">
-      <div class="spongiatia-answer-body" ng-bind-html="s.answer.body"> </div>
-    </div>
-    <hr>
   </div>
 </div>
 <p>
